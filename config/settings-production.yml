@@ -4,7 +4,7 @@ buffy:
     gh_access_token: <%= ENV['BUFFY_GH_ACCESS_TOKEN'] %>
     gh_secret_token: <%= ENV['BUFFY_GH_SECRET_TOKEN'] %>
   teams:
-    editors: 3824115
+    editors: 6609690
   responders:
     help:
     hello:
@@ -19,6 +19,12 @@ buffy:
             - "Our CoC: https://github.com/openjournals/joss/blob/master/CODE_OF_CONDUCT.md"
             - "It's adapted from the Contributor Covenant: http://contributor-covenant.org"
             - "Reports of abusive or harassing behavior may be reported to reports@theoj.org"
+      - max_test:
+          command: test update
+          description: Blah Blah Blah
+          messages:
+            - "blah blah blah blah blah"
+            - "aaaaa"
     reviewers_list:
       only: editors
     assign_editor:
@@ -32,8 +38,8 @@ buffy:
       only: editors
     list_team_members:
       command: list editors
-      team_id: 3824115
-      heading: Current journal editors
+      team_id: 6609690
+      heading: Current recipe editors
     check_references:
     repo_checks:
     set_value:
@@ -60,31 +66,15 @@ buffy:
           add_labels:
             - recommend rejection
     welcome:
-      template_file: welcome.md
+      template_file: review_welcome.md
       data_from_issue:
-        - repository
+        - bot_name
     close_issue_command:
       only: editors
       command: reject
       add_labels:
         - rejected
     external_service:
-      - code_quality:
-          only: editors
-          command: analyze code
-          description: Reports on the quality of the code
-          message: Inspecting code...
-          url: https://dummy-external-service.herokuapp.com/code-analysis
-          method: post
-          query_params:
-            secret: A1234567890Z
-          data_from_issue:
-            - target-repository
-          mapping:
-            target_url: target-repository
-          headers:
-            Authorization: OAUTH-token 123456
-            Time-Zone: Europe/Amsterdam
       - cat_facts:
           command: tell me something about cats
           description: Random facts about cats
@@ -93,9 +83,27 @@ buffy:
           query_params:
               animal_type: cat
               amount: 1
-          template_file: cats.md
-    reviewer_checklist_comment:
+    add_remove_checklist:
       template_file: reviewer_checklist.md
       data_from_issue:
         - target-repository
         - author-handle
+    wrong_command:
+    reminders:
+      only: editors
+    github_action:
+      - draft_paper:
+        command: generate pdf
+        workflow_repo: openjournals/joss-papers
+        workflow_name: draft-paper.yml
+        workflow_ref: master
+        description: Generates the pdf paper
+        data_from_issue:
+          - branch
+          - target-repository
+          - issue_id
+        mapping:
+          repository_url: target-repository
+   
+
+
