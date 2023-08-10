@@ -40,8 +40,6 @@ buffy:
       command: list editors
       team_id: 6609690
       heading: Current recipe editors
-    check_references:
-    repo_checks:
     set_value:
       - version:
           only: editors
@@ -74,15 +72,6 @@ buffy:
       command: reject
       add_labels:
         - rejected
-    external_service:
-      - cat_facts:
-          command: tell me something about cats
-          description: Random facts about cats
-          url: "https://cat-fact.herokuapp.com/facts/random"
-          method: get
-          query_params:
-              animal_type: cat
-              amount: 1
     add_remove_checklist:
       template_file: reviewer_checklist.md
       data_from_issue:
