@@ -85,7 +85,7 @@ buffy:
           command: generate pdf
           workflow_repo: ACCESS-NRI/med-recipes
           workflow_name: draft-paper.yml
-          workflow_ref: master
+          workflow_ref: main
           description: Generates the pdf paper
           data_from_issue:
             - branch
