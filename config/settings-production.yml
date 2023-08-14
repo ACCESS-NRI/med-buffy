@@ -78,8 +78,6 @@ buffy:
         - target-repository
         - author-handle
     wrong_command:
-    reminders:
-      only: editors
     github_action:
       - draft_paper:
           command: generate pdf
