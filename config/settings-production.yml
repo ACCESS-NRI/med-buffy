@@ -107,4 +107,11 @@ buffy:
         silent: true
         template_file: "review_started.md"
         close: true
-
+    reviewer_checklist_comment:
+      if:
+        title: "^\\[REVIEW\\]:"
+        reject_msg: Checklists can only be created once the review has started in the review issue
+      template_file: reviewer_checklist.md
+      data_from_issue:
+        - target-repository
+        - author-handle
