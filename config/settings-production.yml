@@ -91,13 +91,12 @@ buffy:
             - issue_id
           mapping:
             repository_url: target-repository
-            
     external_start_review:
       only: editors
       external_call:
         url: "https://medportal-dev-6a745f452687.herokuapp.com/papers/api_start_review"
         query_params:
-          secret: <%= ENV['BOT_SECRET'] %>
+          secret: <%= ENV['BUFFY_GH_ACCESS_TOKEN'] %>
         data_from_issue:
           - branch
         mapping:
