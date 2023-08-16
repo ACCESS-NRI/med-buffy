@@ -19,12 +19,6 @@ buffy:
             - "Our CoC: https://github.com/openjournals/joss/blob/master/CODE_OF_CONDUCT.md"
             - "It's adapted from the Contributor Covenant: http://contributor-covenant.org"
             - "Reports of abusive or harassing behavior may be reported to reports@theoj.org"
-      - max_test:
-          command: test update
-          description: Blah Blah Blah
-          messages:
-            - "blah blah blah blah blah"
-            - "aaaaa"
     reviewers_list:
       only: editors
     assign_editor:
@@ -85,6 +79,78 @@ buffy:
           workflow_name: draft-paper.yml
           workflow_ref: main
           description: Generates the pdf paper
+          data_from_issue:
+            - branch
+            - target-repository
+            - issue_id
+          mapping:
+            repository_url: target-repository
+      - recommend_acceptance:
+          if:
+            value_matches:
+              archive: "^((?!Pending).)*$"
+            reject_msg: "Paper is not ready for acceptance yet, the archive is missing"
+          only: editors
+          command: recommend-accept
+          workflow_repo: ACCESS-NRI/med-recipes
+          workflow_name: recommend-acceptance.yml
+          workflow_ref: main
+          description: Recommends the submission for acceptance
+          message: "```\nAttempting dry run of processing paper acceptance...\n```"
+          inputs:
+            add_labels: recommend-accept
+          data_from_issue:
+            - branch
+            - target-repository
+            - issue_id
+          mapping:
+            repository_url: target-repository
+          run_responder:
+            responder_key: check_references
+      - accept:
+          if:
+            value_matches:
+              archive: "^((?!Pending).)*$"
+            reject_msg: "Paper is not ready for acceptance yet, the archive is missing"
+          only: eics
+          command: accept
+          workflow_repo: ACCESS-NRI/med-recipes
+          workflow_name: accept.yml
+          workflow_ref: main
+          description: Accept and publish the paper
+          message: "```\nDoing it live! Attempting automated processing of paper acceptance...\n```"
+          inputs:
+            add_labels: "accepted,published"
+          data_from_issue:
+            - branch
+            - target-repository
+            - issue_id
+          mapping:
+            repository_url: target-repository
+      - reaccept:
+          if:
+            value_matches:
+              archive: "^((?!Pending).)*$"
+            reject_msg: "Can't rebuild paper, there's no value for archive"
+          only: eics
+          command: reaccept
+          workflow_repo: ACCESS-NRI/med-recipes
+          workflow_name: reaccept.yml
+          workflow_ref: main
+          description: Update data on an accepted/published paper
+          message: "```\nRebuilding paper!\n```"
+          data_from_issue:
+            - branch
+            - target-repository
+            - issue_id
+          mapping:
+            repository_url: target-repository
+      - preprint:
+          command: generate preprint
+          workflow_repo: ACCESS-NRI/med-recipes
+          workflow_name: preprint.yml
+          workflow_ref: main
+          description: Generates a LaTeX preprint file
           data_from_issue:
             - branch
             - target-repository
