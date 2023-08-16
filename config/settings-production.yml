@@ -112,7 +112,7 @@ buffy:
             value_matches:
               archive: "^((?!Pending).)*$"
             reject_msg: "Paper is not ready for acceptance yet, the archive is missing"
-          only: eics
+          only: editors # todo: change to eics
           command: accept
           workflow_repo: ACCESS-NRI/med-recipes
           workflow_name: accept.yml
