@@ -40,7 +40,7 @@ buffy:
           sample_value: "v1.0.0"
       - archive:
           only: editors
-          sample_value: "10.21105/joss.12345"
+          sample_value: "10.21105/medportal.12345"
     label_command:
       - review_ok:
           only: editors
