@@ -162,7 +162,7 @@ buffy:
       external_call:
         url: "https://medportal-dev-6a745f452687.herokuapp.com/papers/api_start_review"
         query_params:
-          secret: <%= ENV['BUFFY_GH_ACCESS_TOKEN'] %>
+          secret: <%= ENV['JOSS_SECRET'] %>
         data_from_issue:
           - branch
         mapping:
