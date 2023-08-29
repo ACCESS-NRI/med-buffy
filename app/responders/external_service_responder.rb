@@ -1,5 +1,8 @@
 require_relative '../lib/responder'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
+
 class ExternalServiceResponder < Responder
 
   keyname :external_service

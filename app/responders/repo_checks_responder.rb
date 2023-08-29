@@ -1,5 +1,8 @@
 require_relative '../lib/responder'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
+
 class RepoChecksResponder < Responder
 
   keyname :repo_checks

@@ -1,5 +1,8 @@
 require_relative '../lib/responder'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
+
 class CheckReferencesResponder < Responder
 
   keyname :check_references

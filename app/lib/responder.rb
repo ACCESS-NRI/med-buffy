@@ -6,6 +6,10 @@ require_relative 'templating'
 require_relative 'workers'
 require_relative 'logging'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
+
+
 class Responder
   include Actions
   include Authorizations
