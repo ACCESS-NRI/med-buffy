@@ -6,8 +6,9 @@ module GitHubWebhookFilter
 
   before '/dispatch' do
     if request.request_method == 'POST'
-      logger.warn("gwf:09")
-      logger.warn(settings.buffy[:env][:gh_secret_token])
+      puts "blah blah blah"
+      Logger.new(STDOUT).warn("gwf:09")
+      Logger.new(STDOUT).warn(settings.buffy[:env][:gh_secret_token])
       webhook = Issue::Webhook.new(secret_token: settings.buffy[:env][:gh_secret_token],
                                    discard_sender: { settings.buffy[:env][:bot_github_user] => ["issue_comment"]},
                                    accept_events: ["issues", "issue_comment"])
