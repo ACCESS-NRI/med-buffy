@@ -7,7 +7,7 @@ module Defaults
   def default_settings
     puts "blahblah"
     Logger.new(STDOUT).warn("defaults:08")
-    Logger.new(STDOUT).warn(ENV['BUFFY_GH_ACCESS_TOKEN'])
+    Logger.new(STDOUT).warn(ENV['BUFFY_GH_SECRET_TOKEN'])
     @defaults ||= Sinatra::IndifferentHash[
       bot_github_user: ENV['BUFFY_BOT_GH_USER'],
       gh_access_token: ENV['BUFFY_GH_ACCESS_TOKEN'],
