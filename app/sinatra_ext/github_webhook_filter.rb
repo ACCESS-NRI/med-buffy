@@ -1,5 +1,6 @@
 require 'sinatra/extension'
 require 'issue'
+require_relative 'logging'
 
 module GitHubWebhookFilter
   extend Sinatra::Extension

@@ -1,4 +1,5 @@
 require 'sinatra/indifferent_hash'
+require_relative 'logging'
 
 module Defaults
 
