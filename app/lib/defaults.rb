@@ -5,6 +5,8 @@ module Defaults
   # Default value for needed env settings.
   # Can be overriden from the config/settings YAML file.
   def default_settings
+    logging.warn("defaults:08")
+    logging.warn(ENV['BUFFY_GH_ACCESS_TOKEN'])
     @defaults ||= Sinatra::IndifferentHash[
       bot_github_user: ENV['BUFFY_BOT_GH_USER'],
       gh_access_token: ENV['BUFFY_GH_ACCESS_TOKEN'],
