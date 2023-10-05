@@ -30,7 +30,6 @@ class AddAndRemoveUserChecklistResponder < Responder
   def add_checklist(user)
     if @previous.empty?
       checklist = "\n" + @mark +
-                  "\n" + "## Review checklist for " + user +
                   "\n" + render_external_template(template_file, locals) +
                   "\n" + @end_mark+ "\n"
 
