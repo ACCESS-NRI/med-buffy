@@ -26,6 +26,9 @@ buffy:
     remove_editor:
       only: editors
       no_editor_text: "TBD"
+    check_references:
+      description: "Check the references of the paper for missing DOIs"
+      example_invocation: "@med-oc check references"
     invite:
       only: editors
     add_remove_assignee:
