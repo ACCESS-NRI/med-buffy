@@ -1,5 +1,5 @@
 require_relative "../lib/responder"
-
+# THIS IS NOT USED BY US, OR BY JOSS. PROBABLY SHOULD BE REMOVED.
 class InitialValuesResponder < Responder
 
   keyname :initial_values
