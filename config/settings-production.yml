@@ -19,6 +19,16 @@ buffy:
             - "Our CoC: https://github.com/openjournals/joss/blob/master/CODE_OF_CONDUCT.md"
             - "It's adapted from the Contributor Covenant: http://contributor-covenant.org"
             - "Reports of abusive or harassing behavior may be reported to reports@theoj.org"
+    update_comment:
+      - editor_post-review_checklist:
+          only: editors
+          if:
+            title: "^\\[REVIEW\\]:"
+            reject_msg: "This is not a review issue"
+          command: create post-review checklist
+          description: Creates a post-review checklist with editor and authors tasks
+          template_file: post-review_checklist.md
+
     reviewers_list:
       only: editors
     assign_editor:
