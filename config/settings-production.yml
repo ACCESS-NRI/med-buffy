@@ -26,6 +26,8 @@ buffy:
     remove_editor:
       only: editors
       no_editor_text: "TBD"
+    #reminders: - This is untested, and currently not needed I don't think.
+    #  only: editors
     check_references:
       description: "Check the references of the paper for missing DOIs"
       example_invocation: "@med-oc check references"
