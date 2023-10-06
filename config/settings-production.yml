@@ -31,6 +31,8 @@ buffy:
     check_references:
       description: "Check the references of the paper for missing DOIs"
       example_invocation: "@med-oc check references"
+    repo_checks:
+      description: "Perform checks on the repository"
     invite:
       only: editors
     add_remove_assignee:
