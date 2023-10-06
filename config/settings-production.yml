@@ -132,7 +132,7 @@ buffy:
             value_matches:
               archive: "^((?!Pending).)*$"
             reject_msg: "Can't rebuild paper, there's no value for archive"
-          only: eics
+          only: editors # todo: change to eics
           command: reaccept
           workflow_repo: ACCESS-NRI/med-recipes
           workflow_name: reaccept.yml
