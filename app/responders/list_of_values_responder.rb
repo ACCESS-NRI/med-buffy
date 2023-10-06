@@ -1,5 +1,6 @@
 require_relative '../lib/responder'
-
+# THIS IS NOT USED BY US, OR BY JOSS. PROBABLY SHOULD BE REMOVED.
+# This can be used to dynamically extra things like (@med-oc set 10.21105/medportal.00103 as archive).
 class ListOfValuesResponder < Responder
 
   keyname :list_of_values
